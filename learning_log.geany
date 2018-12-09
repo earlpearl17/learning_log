@@ -27,8 +27,7 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
-FILE_NAME_0=0;Python;0;EUTF-8;2;1;0;E%3A%5CUSE-PythonCrashCourse%5Cwip%5Clearning_log%5Clearning_log%5Csettings.py;0;2
+current_page=-1
 
 [prjorg]
 source_patterns=*.c;*.C;*.cpp;*.cxx;*.c++;*.cc;*.m;
