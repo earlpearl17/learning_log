@@ -23,6 +23,7 @@ def topics(request):
 @login_required
 def topic(request, topic_id):
     """Show a single topic and all its entries."""
+    # added comment to allow new git commit
     #topic = Topic.objects.get(id=topic_id)
     # non-existing topic will result in a 404 error page, not 500 error page
     # ie. http//localhost:8000/topics/999999/
