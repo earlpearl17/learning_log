@@ -27,6 +27,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# FOR TESTING Custom Error Pages, revert post-testing
+#DEBUG = False
+
+# must have at least one host specified in ALLOWED_HOSTS when 
+# DEBUG is set to False.
+#ALLOWED_HOSTS = ['127.0.0.1']
+
+
+
+
 
 # Application definition
 
@@ -62,7 +72,9 @@ ROOT_URLCONF = 'learning_log.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+	# look in the root template directory for the error page templates 
+	'DIRS': [os.path.join(BASE_DIR, 'learning_log/templates')],
+        #'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
