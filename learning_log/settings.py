@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 # FOR TESTING Custom Error Pages, revert post-testing
 #DEBUG = False
 
-# must have at least one host specified in ALLOWED_HOSTS when 
+# must have at least one host specified in ALLOWED_HOSTS when
 # DEBUG is set to False.
 #ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -43,10 +43,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     # Third party apps
     'bootstrap3',
-	
+
     # My apps
     'learning_logs',
     'users',
@@ -68,7 +68,7 @@ ROOT_URLCONF = 'learning_log.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-	# look in the root template directory for the error page templates 
+	# look in the root template directory for the error page templates
 	#'DIRS': [os.path.join(BASE_DIR, 'learning_log/templates')],
         'DIRS': [],
         'APP_DIRS': True,
@@ -118,7 +118,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
 # My settings
 LOGIN_URL = '/users/login/'
@@ -128,24 +128,38 @@ BOOTSTRAP3 = {
     'include_jquery': True,
     }
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'learning_log/static/')
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
 # Heroku settings
-if os.getcwd() == '/app':
-    import dj_database_url
-    DATABASES = {
-	    'default': dj_database_url.config(default='postgres://localhost')
-    }
-    # Honor the 'X-Forwarded-Proto' header for request.is_secure().
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    # Allow all host headers.
-    #ALLOWED_HOSTS = ['*']
-    # Allow only Heroku to host the project.
-    ALLOWED_HOSTS = ['liams-learning-log.herokuapp.com']
-    
-    DEBUG = False
-    
-    # Static asset configuration
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = 'staticfiles'
-    STATICFILES_DIRS = (
-	    os.path.join(BASE_DIR, 'static'),
-    )
+# if os.getcwd() == '/app':
+#     import dj_database_url
+#     DATABASES = {
+# 	    'default': dj_database_url.config(default='postgres://localhost')
+#     }
+#     # Honor the 'X-Forwarded-Proto' header for request.is_secure().
+#     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#     # Allow all host headers.
+#     #ALLOWED_HOSTS = ['*']
+#     # Allow only Heroku to host the project.
+#     ALLOWED_HOSTS = ['liams-learning-log.herokuapp.com']
+#
+#     DEBUG = False
+#
+#     # Static asset configuration
+#     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+#     STATIC_ROOT = 'staticfiles'
+#     STATICFILES_DIRS = (
+# 	    os.path.join(BASE_DIR, 'static'),
+#     )
