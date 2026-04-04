@@ -9,6 +9,7 @@
 *.json
 __pycache__/
 ll_venv/
+ll_env/
 local_settings.py
 db.sqlite3
 /media
